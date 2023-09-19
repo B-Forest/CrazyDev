@@ -16,11 +16,17 @@ class Pair
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'Pair', targetEntity: Sock::class)]
-    private Collection $Sock_one;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $pairStory = null;
+
+    #[ORM\ManyToOne(inversedBy: 'pairs')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Sock $Sock = null;
+
+    #[ORM\ManyToOne(inversedBy: 'pairss')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Sock $OtherSock = null;
 
     public function __construct()
     {
@@ -39,6 +45,30 @@ class Pair
     public function setPairStory(string $pairStory): static
     {
         $this->pairStory = $pairStory;
+
+        return $this;
+    }
+
+    public function getSock(): ?Sock
+    {
+        return $this->Sock;
+    }
+
+    public function setSock(?Sock $Sock): static
+    {
+        $this->Sock = $Sock;
+
+        return $this;
+    }
+
+    public function getOtherSock(): ?Sock
+    {
+        return $this->OtherSock;
+    }
+
+    public function setOtherSock(?Sock $OtherSock): static
+    {
+        $this->OtherSock = $OtherSock;
 
         return $this;
     }

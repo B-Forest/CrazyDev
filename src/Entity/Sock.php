@@ -44,16 +44,27 @@ class Sock implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'sock', targetEntity: Color::class)]
     private \Doctrine\Common\Collections\Collection $Color;
 
-    #[ORM\OneToMany(mappedBy: 'sock', targetEntity: Pattern::class)]
-    private \Doctrine\Common\Collections\Collection $Pattern;
+    #[ORM\ManyToOne(inversedBy: 'socks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Color $color = null;
+
+    #[ORM\OneToMany(mappedBy: 'Sock', targetEntity: Pair::class, orphanRemoval: true)]
+    private \Doctrine\Common\Collections\Collection $pairs;
+
+    #[ORM\OneToMany(mappedBy: 'OtherSock', targetEntity: Pair::class, orphanRemoval: true)]
+    private \Doctrine\Common\Collections\Collection $pairss;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Pattern $pattern = null;
 
     public function __construct()
     {
-        $this->color = new ArrayCollection();
-        $this->pattern = new ArrayCollection();
-        $this->Color = new ArrayCollection();
-        $this->Pattern = new ArrayCollection();
+        $this->pairs = new ArrayCollection();
+        $this->pairss = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -169,6 +180,90 @@ class Sock implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsMatched(bool $isMatched): static
     {
         $this->isMatched = $isMatched;
+
+        return $this;
+    }
+
+    public function getColor(): ?Color
+    {
+        return $this->color;
+    }
+
+    public function setColor(?Color $color): static
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection<int, Pair>
+     */
+    public function getPairs(): \Doctrine\Common\Collections\Collection
+    {
+        return $this->pairs;
+    }
+
+    public function addPair(Pair $pair): static
+    {
+        if (!$this->pairs->contains($pair)) {
+            $this->pairs->add($pair);
+            $pair->setSock($this);
+        }
+
+        return $this;
+    }
+
+    public function removePair(Pair $pair): static
+    {
+        if ($this->pairs->removeElement($pair)) {
+            // set the owning side to null (unless already changed)
+            if ($pair->getSock() === $this) {
+                $pair->setSock(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection<int, Pair>
+     */
+    public function getPairss(): \Doctrine\Common\Collections\Collection
+    {
+        return $this->pairss;
+    }
+
+    public function addPairss(Pair $pairss): static
+    {
+        if (!$this->pairss->contains($pairss)) {
+            $this->pairss->add($pairss);
+            $pairss->setOtherSock($this);
+        }
+
+        return $this;
+    }
+
+    public function removePairss(Pair $pairss): static
+    {
+        if ($this->pairss->removeElement($pairss)) {
+            // set the owning side to null (unless already changed)
+            if ($pairss->getOtherSock() === $this) {
+                $pairss->setOtherSock(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPattern(): ?Pattern
+    {
+        return $this->pattern;
+    }
+
+    public function setPattern(?Pattern $pattern): static
+    {
+        $this->pattern = $pattern;
 
         return $this;
     }

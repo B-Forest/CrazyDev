@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PatternRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PatternRepository::class)]
@@ -16,8 +18,14 @@ class Pattern
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
-    #[ORM\ManyToOne(inversedBy: 'pattern')]
-    private ?Sock $Sock = null;
+
+    #[ORM\OneToMany(mappedBy: 'pattern', targetEntity: Sock::class)]
+    private Collection $socks;
+
+    public function __construct()
+    {
+        $this->socks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -34,6 +42,14 @@ class Pattern
         $this->path = $path;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Sock>
+     */
+    public function getSocks(): Collection
+    {
+        return $this->socks;
     }
 
 }
