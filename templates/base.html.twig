@@ -18,7 +18,7 @@
         <nav>
             <ul class="flex text-base font-semibold gap-14 ml-24">
              <li><a href="">Accueil</a></li>
-             <li><a href="">Paire Trouvées</a></li>
+             <li><a href="{{path('app_sock')}}">Paire Trouvées</a></li>
              <li><a href="">Deco</a></li>
             </ul>
         </nav>
@@ -32,10 +32,7 @@
             <a href="{{ path('app_register') }}">Inscription</a>
         {% endif %}
         </div>
-        
-
      </header>
-
     
       
         {% block body %}{% endblock %}
