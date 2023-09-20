@@ -5,28 +5,35 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
         
     </head>
     <body>
-        <header>
-        <a href:""><img src:""></a>
-        
-        <nav>
+    <header>
+     <a href:""><img src:""></a>
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    <nav>
             <ul>
              <li><a href=""></a>Lien 1</li>
              <li><a href=""></a>Lien 2</li>
              <li><a href=""></a>Lien 3</li>
             </ul>
         </nav>
-        
+    </header>
+    <h1 class="text-3xl font-bold underline text-red-400">
+        Hello world!
+    </h1>
     
-        </header>
-    
-        <footer>
+      <footer>
             <p>
 				<small>
 					Copyrights 2023 - Chaussettes - <a href="mentions_legales.html">Mentions légales</a>
@@ -34,7 +41,6 @@
 			</p>
         
         </footer>
-    
         {% block body %}{% endblock %}
     </body>
 </html>
