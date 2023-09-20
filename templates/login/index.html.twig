@@ -8,18 +8,27 @@
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        <form action="{{ path('app_login') }}" method="post">
-            <label for="username">Email:</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}">
+        <h1 class="text-3xl font-bold uppercase text-sky-500 flex justify-center max-w-screen-xl mb-24 mr-auto ml-auto">Connexion</h1>
+    
+        <div class = flex justify-center>
+        <form class="mr-auto ml-auto max-w-screen-xl" action="{{ path('app_login') }}" method="post">
+         <div class=" flex mb-16">
+            <div class="mr-10">
+             <label  for="username">Email:</label>
+             <input class="border-b border-black outline-none" type="text" id="username" name="_username" value="{{ last_username }}">
+            </div>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="_password">
+            <input class="border-b border-black outline-none" type="password" id="password" name="_password">
 
             {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"> #}
+           <input type="hidden" name="_target_path" value="/account"> #}
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-            <button type="submit">login</button>
+         </div>
+           <div class="flex justify-center">
+            <button class="border-2 border-sky-500 px-8 py-1 text-sky-500 font-semibold "  type="submit">login</button>
+           </div>
         </form>
+        </div>
     {% endblock %}
