@@ -5,11 +5,13 @@ namespace App\Entity;
 use App\Repository\SockRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: SockRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Sock implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -57,6 +59,9 @@ class Sock implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Pattern $pattern = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Username = null;
 
     public function __construct()
     {
@@ -264,6 +269,18 @@ class Sock implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPattern(?Pattern $pattern): static
     {
         $this->pattern = $pattern;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->Username;
+    }
+
+    public function setUsername(string $Username): static
+    {
+        $this->Username = $Username;
 
         return $this;
     }
