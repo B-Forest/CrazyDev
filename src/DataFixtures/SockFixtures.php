@@ -29,7 +29,7 @@ class SockFixtures extends Fixture implements DependentFixtureInterface
         $sock1->setEmail('benjamin.forest@gmail.com');
         $sock1->setPassword($this->hasher->hashPassword($sock1, 'benjamin'));
         $sock1->setStory('Je suis une chaussette');
-        $sock1->setIsFound(false);
+        $sock1->setIsFound(true);
         $sock1->setIsMatched(false);
         $sock1->setColor($this->getReference('rouge'));
         $sock1->setPattern($this->getReference('rayures'));
@@ -41,7 +41,7 @@ class SockFixtures extends Fixture implements DependentFixtureInterface
         $sock2->setEmail('john.doe@gmail.com');
         $sock2->setPassword($this->hasher->hashPassword($sock2, 'john'));
         $sock2->setStory('Je suis une chaussette 2');
-        $sock2->setIsFound(false);
+        $sock2->setIsFound(true);
         $sock2->setIsMatched(false);
         $sock2->setColor($this->getReference('bleu'));
         $sock2->setPattern($this->getReference('carreaux'));
