@@ -9,7 +9,6 @@ security:
             entity:
                 class: App\Entity\Sock
                 property: email
-        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,13 +17,21 @@ security:
             lazy: true
             provider: app_user_provider
 
-        form_login:
-            login_path: app_login
-            check_path: app_login
-            enable_csrf: true
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
 
-        logout:
-            path: app_logout
+            logout:
+                path: app_logout
+
+                # default_target_path: app_homepage
+                # always_use_default_target_path: true
+                # target_path_parameter: _target_path
+                # username_parameter: _username
+                # password_parameter: _password
+                # csrf_parameter: _csrf_token
+                # csrf_token_id: authenticate
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -35,8 +42,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    # - { path: ^/admin, roles: ROLE_ADMIN }
+    # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     security:
