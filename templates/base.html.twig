@@ -13,15 +13,13 @@
         {% endblock %}
         
     </head>
-    <body>
-    
-    
+    <body>  
      <header class="flex justify-between mr-auto ml-auto mt-8 max-w-screen-xl mb-36">
         <nav>
             <ul class="flex text-base font-semibold gap-14 ml-24">
-             <li><a href=""></a>Accueil</li>
-             <li><a href=""></a>Paire Trouvées</li>
-             <li><a href=""></a>Deco</li>
+             <li><a href="">Accueil</a></li>
+             <li><a href="">Paire Trouvées</a></li>
+             <li><a href="">Deco</a></li>
             </ul>
         </nav>
 
@@ -31,6 +29,7 @@
             <a href="{{ path('app_logout') }}">Déconnexion</a>
         {% else %}
             <a href="{{ path('app_login') }}">Connexion</a>
+            <a href="{{ path('app_register') }}">Inscription</a>
         {% endif %}
         </div>
         
