@@ -3,15 +3,15 @@
 {% block title %}Hello PairController!{% endblock %}
 
 {% block body %}
-    <h1 class="text-3xl font-bold uppercase text-pink-500 flex justify-center max-w-screen-xl mb-24 mr-auto ml-auto">Liste des paires </h1>
-
-    {% if pairs %}
-        <div class="grid grid-cols-2 gap-x-4 gap-y-8">
-        {% for pair in pairs %}
-            {% include('pair/_card.html.twig') %}
-        {% endfor %}
-        </div>
-    {% else %}
-        <p>Aucun pair trouvé.</p>
-    {% endif %}
+    <h1 class="text-3xl font-bold uppercase text-pink-500 flex justify-center max-w-screen-xl mb-24 mr-auto ml-auto">
+        Liste des paires </h1>
+        {% if pairs %}
+            <div class="grid grid-cols-2 gap-x-4 gap-y-8 border-red-700">
+                {% for pair in pairs %}
+                    {% include('pair/_card.html.twig') %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Aucun pair trouvé.</p>
+        {% endif %}
 {% endblock %}
