@@ -14,11 +14,11 @@
         <form class="mr-auto ml-auto max-w-screen-xl" action="{{ path('app_login') }}" method="post">
          <div class=" flex mb-16">
             <div class="mr-10">
-             <label  for="username">Email:</label>
+             <label class="mr-5"  for="username">Email:</label>
              <input class="border-b border-black outline-none" type="text" id="username" name="_username" value="{{ last_username }}">
             </div>
 
-            <label for="password">Password:</label>
+            <label class="mr-5"  for="password">Password:</label>
             <input class="border-b border-black outline-none" type="password" id="password" name="_password">
 
             {# If you want to control the URL the user is redirected to on success
