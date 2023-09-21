@@ -1,15 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil de {{sock.username}} {% endblock %}
+{% block title %}Profil de {{ sock.username }} {% endblock %}
 
 {% block body %}
-<div class='relative border-orange-200 h-3/5 w-3/5' >
-<div class='m-0 top-1/2 bot-1/2'>
-<h1> test </h1>
+    <div class='relative border-orange-200 h-3/5 w-3/5'>
+        <div class='m-0 top-1/2 bot-1/2'>
+            <h1> test </h1>
 
-<img src='{{forme}}' width="50" height="60">
-<p>{{sock.story}}</p>
-</div>
-</div>
+            <img src='{{ forme }}' width="50" height="60">
+            <p>{{ sock.story }}</p>
+        </div>
+    </div>
+    {% if app.user %}
+        {% if sock.id == app.user.id %}
+            <p>c'est votre profil</p>
+        {% else %}
+            {% if app.user.isMatched == 0 %}
+            <div>
+                {{ form_start(form) }}
+                {{ form_row(form.found) }}
+                {{ form_end(form) }}
+            </div>
+            {% else %}
+                <p>Vous avez déjà trouvé votre paire</p>
+            {% endif %}
+
+        {% endif %}
+
+    {% else %}
+        <div>
+        <a href="{{ path('app_login') }}">Connectez-vous pour trouver votre paire</a>
+    {% endif %}
 
 {% endblock %}

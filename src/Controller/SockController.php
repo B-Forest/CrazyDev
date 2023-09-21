@@ -12,9 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SockRepository;
-use App\Repository\PairRepository;
-use App\Entity\Sock;
-
 class SockController extends AbstractController
 {
     #[Route('/lostsock', name: 'app_sock')]
@@ -25,20 +22,28 @@ class SockController extends AbstractController
         ]);
     }
 
-    #[Route('/lostsock/{id}', name: 'lost_sock', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(Sock $sock, PairRepository $pairRepository, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/lostsock/{id}', name: 'lost_sock', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function show(Sock $sock, PairRepository $pairRepository, SockRepository $sockRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
         //$pair = $pairRepository->getRepository(Product::class)->find($id);
-        $pair= new Pair();
-        $user = $this->getUser();
-        $otherSock = $pairRepository->findOneBy(['id' => $sock->getId()]);
 
         $form = $this->createForm(PairsType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $pair= new Pair();
+            $user = $this->getUser();
+            $otherSock = $sockRepository->findOneBy(['id' => $sock->getId()]);
+            $firstStory = $user->getStory();
+            $secondStory = $otherSock->getStory();
+            $fullStory ='Voici nos deux histoires :' . $firstStory . ' ' . $secondStory;
+            $user->setIsFound(true);
+            $otherSock->setIsFound(true);
             $pair->setSock($user);
             $pair->setotherSock($otherSock);
+            $pair->setPairStory($fullStory);
+            $entityManager->persist($pair);
+            $pairRepository->save($pair, true);
 
             return $this->redirectToRoute('app_pair');
         }
