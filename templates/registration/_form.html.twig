@@ -1,15 +1,24 @@
 {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.story) }}
-        {{ form_row (registrationForm.color) }}
-        {{ form_row (registrationForm.pattern) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="flex mb-10">
+        {{ form_row(registrationForm.username ,{'attr': {'class': 'border-b border-black outline-none mr-10'}}) }}   
+        {{ form_row(registrationForm.email ,{'attr': {'class': 'border-b border-black outline-none pr-14'}}) }}
+        </div>    
+    <div class="flex mb-10"> 
+        {{ form_row(registrationForm.story ,{'attr': {'class': 'border-b border-black outline-none mr-10 pr-9'}}) }}
+        {{ form_row(registrationForm.plainPassword , {'attr' : {'class': 'border-b border-black outline-none'}, 'label': 'Mot de passe'}) }}
+        </div> 
+    <div class="flex justify-center mb-10 gap-14"> 
+        {{ form_row(registrationForm.color) }}
+        {{ form_row(registrationForm.pattern) }}
+        </div> 
+        <div class="flex justify-center gap-14 items-center mb-20"> 
+        {{ form_row(registrationForm.agreeTerms ,{'attr': {'class': ''}}) }}
 
-<button type="submit" class="btn">Register</button>
-{{ form_end(registrationForm) }}
+       <button class="border-2 border-pink-500 px-8 py-1 text-pink-500 font-semibold" type="submit" class="btn">Register</button>
+       
+       {{ form_end(registrationForm) }}
+       </div>
+
+       
