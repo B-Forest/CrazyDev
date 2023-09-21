@@ -15,19 +15,19 @@ class PatternFixtures extends Fixture
         // $manager->persist($product);
 
         $pattern1 = new Pattern();
-        $pattern1->setPath('rayures');
+        $pattern1->setPath('/picture/trees.webp');
         $manager->persist($pattern1);
-        $this->addReference('rayures', $pattern1);
+        $this->addReference('sapin', $pattern1);
 
         $pattern2 = new Pattern();
-        $pattern2->setPath('carreaux');
+        $pattern2->setPath('/picture/bananas.webp');
         $manager->persist($pattern2);
-        $this->addReference('carreaux', $pattern2);
+        $this->addReference('banane', $pattern2);
 
         $pattern3 = new Pattern();
-        $pattern3->setPath('pois');
+        $pattern3->setPath('/picture/pink-flowers.webp');
         $manager->persist($pattern3);
-        $this->addReference('pois', $pattern3);
+        $this->addReference('cerisier', $pattern3);
 
         $manager->flush();
     }

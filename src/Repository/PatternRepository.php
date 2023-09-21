@@ -21,6 +21,8 @@ class PatternRepository extends ServiceEntityRepository
         parent::__construct($registry, Pattern::class);
     }
 
+    
+
 //    /**
 //     * @return Pattern[] Returns an array of Pattern objects
 //     */

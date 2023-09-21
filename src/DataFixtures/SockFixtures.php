@@ -32,7 +32,7 @@ class SockFixtures extends Fixture implements DependentFixtureInterface
         $sock1->setIsFound(true);
         $sock1->setIsMatched(false);
         $sock1->setColor($this->getReference('rouge'));
-        $sock1->setPattern($this->getReference('rayures'));
+        $sock1->setPattern($this->getReference('sapin'));
         $manager->persist($sock1);
         $this->addReference('sock1', $sock1);
 
@@ -44,7 +44,7 @@ class SockFixtures extends Fixture implements DependentFixtureInterface
         $sock2->setIsFound(true);
         $sock2->setIsMatched(false);
         $sock2->setColor($this->getReference('bleu'));
-        $sock2->setPattern($this->getReference('carreaux'));
+        $sock2->setPattern($this->getReference('banane'));
         $manager->persist($sock2);
         $this->addReference('sock2', $sock2);
 
