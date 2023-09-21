@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Sock;
-use App\Repository\PairRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SockRepository;
 use App\Repository\PairRepository;
-use App\Entity\Sock;
 
 class SockController extends AbstractController
 {
