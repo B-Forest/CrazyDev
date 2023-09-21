@@ -39,6 +39,16 @@ class SockRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
+    public function findLonelySocks (): array
+    {
+        $qb = $this->createQueryBuilder('sock');
+
+        $qb->addSelect('sock')
+            ->andWhere('sock.isFound = 0')
+            ->orderBy('sock.id', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 //    /**
 //     * @return Sock[] Returns an array of Sock objects
 //     */
