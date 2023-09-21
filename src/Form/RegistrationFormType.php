@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,7 +21,10 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email')
             ->add('username')
-            ->add('story')
+            ->add('story' ,TextareaType::class,
+            [
+                'label' => 'Votre Histoire ',
+            ])
             ->add('color', EntityType::class, [
                 'class' => 'App\Entity\Color',
                 'choice_label' => 'label',
