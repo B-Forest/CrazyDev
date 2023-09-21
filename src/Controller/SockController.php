@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Sock;
+use App\Repository\PairRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,15 +26,11 @@ class SockController extends AbstractController
     {
         //$pair = $pairRepository->getRepository(Product::class)->find($id);
         $pattern = $sock->getPattern();
-        
+      
         return $this->render('/sock/profil.html.twig', [
             'sock' => $sock,
             'forme' => $pattern->getPath(),
-
         ]);
-
-        // or render a template
-        // in the template, print things with {{ product.name }}
-        // return $this->render('product/show.html.twig', ['product' => $product]);
     }
+  
 }
