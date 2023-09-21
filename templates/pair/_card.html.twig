@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 w-full mx-auto justify-center max-w-screen-xl  ml-24">
     <div class='w-full '>
-        <div class="inline-block max-w-xs h-1/6 rounded overflow-hidden shadow-lg ">
+        <div class="inline-block max-w-xs rounded overflow-hidden shadow-lg h-auto ">
             <div class="font-bold text-xl mb-2 justify-center items-center flex "
                  id="name">
                 <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.sock.username }}</a>
@@ -22,7 +22,7 @@
     </div>
 
     <div class='w-full '>
-        <div class="inline-block max-w-xs h-1/6 rounded overflow-hidden shadow-lg ">
+        <div class="inline-block max-w-xs h-auto rounded overflow-hidden shadow-lg ">
             <div class="font-bold text-xl mb-2 justify-center items-center flex "
                  id="name">
                 <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.otherSock.username }}</a>
