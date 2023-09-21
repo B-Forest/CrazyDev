@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{sock.username}} {% endblock %}
+
+{% block body %}
+<div class='relative border-orange-200 h-3/5 w-3/5' >
+<div class='m-0 top-1/2 bot-1/2'>
+<h1> test </h1>
+
+<img src='{{forme}}' width="50" height="60">
+<p>{{sock.story}}</p>
+</div>
+</div>
+
+{% endblock %}
