@@ -15,23 +15,31 @@
     </head>
     <body>  
      <header class="flex justify-between mr-auto ml-auto mt-8 max-w-screen-xl mb-36">
-        <nav>
+        <nav class"">
             <ul class="flex text-base font-semibold gap-14 ml-24">
+
              <li><a href="">Accueil</a></li>
-             <li><a href="{{path('app_sock')}}">Paire Trouvées</a></li>
-             <li><a href="{{ path('app_pair') }}">Pairs</a></li>
+             <li><a href="{{path('app_sock')}}">Chaussettes Perdu</a></li>
+             <li><a href="{{ path('app_pair') }}">Paires Trouvées</a></li>
             </ul>
         </nav>
 
-        
-        <div class="border-2 border-sky-500 px-3 py-2 text-sky-500 font-semibold mr-24">
-        {% if app.user %}
+        <div class="flex">
+        {% if app.user %}    
+        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-24">             
             <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
         {% else %}
+        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-10">  
             <a href="{{ path('app_login') }}">Connexion</a>
+        </div>
+        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-24">  
             <a href="{{ path('app_register') }}">Inscription</a>
+        </div>
         {% endif %}
         </div>
+        
+        
      </header>
     
       

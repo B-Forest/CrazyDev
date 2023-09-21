@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil de {{sock.username}} {% endblock %}
+{% block title %}Profil de {{ sock.username }} {% endblock %}
 
 {% block body %}
+
 <div class='flex flex-wrap justify-center align-center ' id='Profil'>
     <div class='border-solid border-2 border-sky-500 rounded w-10/12 bg-{{sock.color.twclass}}-200' id='color'>
         <div class='text-center inset-x-0 top-0 h-16'>
@@ -23,9 +24,32 @@
             </div>
         </div>
         <div class='text-center inset-x-0 bottom-0 h-16 flex justify-center pt-4 pb-4'>
-            <button class='bottom-auto border-solid border-2 border-sky-500 rounded' type="button">MATCH</button>
+        {% if app.user %}
+        {% if sock.id == app.user.id %}
+            <p>c'est votre profil</p>
+        {% else %}
+            {% if app.user.isMatched == 0 %}
+            <div class='bottom-auto border-solid border-2 border-sky-500 rounded'>
+                {{ form_start(form) }}
+                {{ form_row(form.found) }}
+                {{ form_end(form) }}
+            </div>
+            {% else %}
+                <p>Vous avez déjà trouvé votre paire</p>
+            {% endif %}
+
+        {% endif %}
+
+    {% else %}
+        <div>
+        <a href="{{ path('app_login') }}">Connectez-vous pour trouver votre paire</a>
+    {% endif %}
         </div>
     </div>
 </div>
+
+    
+    
+
 
 {% endblock %}
