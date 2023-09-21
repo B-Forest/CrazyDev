@@ -4,10 +4,12 @@
 
 {% block body %}
 <button type="button">Couleur</button><button type="button">Formes</button>
+<div class="grid grid-cols-3">
+    {%if (socklonelies) %}
+        {% for socklonely in socklonelies %}
+            {% include 'sock/_card.html.twig'%}
+        {% endfor %}
+    {% endif %}
+</div>
 
-{%if (socklonelies) %}
-    {% for socklonely in socklonelies %}
-        {% include 'sock/_card.html.twig'%}
-    {% endfor %}
-{% endif %}
 {% endblock %}
