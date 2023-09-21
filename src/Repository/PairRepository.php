@@ -21,6 +21,15 @@ class PairRepository extends ServiceEntityRepository
         parent::__construct($registry, Pair::class);
     }
 
+    public function save(Pair $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Pair[] Returns an array of Pair objects
 //     */
