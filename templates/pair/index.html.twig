@@ -6,7 +6,7 @@
     <h1>Liste des pairs </h1>
 
     {% if pairs %}
-        <div class="flex flex-col justify-center items-center md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+        <div class="grid grid-cols-2 gap-x-4 gap-y-8">
         {% for pair in pairs %}
             {% include('pair/_card.html.twig') %}
         {% endfor %}
