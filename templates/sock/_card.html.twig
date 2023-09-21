@@ -1,14 +1,22 @@
 <div class='w-full '>
     <div class="inline-block max-w-xs h-1/6 rounded overflow-hidden shadow-lg ">
-    <div class="font-bold text-xl mb-2 justify-center items-center flex " id="name">The Coldest Sunset</div>
-        <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent" src="{{ asset('picture/bananas.webp')}}" alt="Motifs"></div>
+        <a href="{{ path('lost_sock',{'id' : socklonely.id}) }}">
+            <div class="font-bold text-xl mb-2 justify-center items-center flex "
+                 id="name">{{ socklonely.username }}</div>
+        </a>
+        <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
+                                                           src="{{ asset('picture/bananas.webp') }}" alt="Motifs"></div>
         <div class="px-6 py-4">
-            <h2 class="justify-center flex">Mon histoire<h2>
+
+            <div class="font-bold text-xl mb-2 justify-center items-center flex "
+                 id="name">{{ socklonely.username }}</div>
             <p class="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
+                perferendis eaque, exercitationem praesentium nihil.
             </p>
-            <button class="rounded">Voir le profil</button>
+            <a href="{{ path('lost_sock',{'id' : socklonely.id}) }}">
+                <button class="rounded">Voir le profil</button>
+            </a>
         </div>
     </div>
-    
 </div>
