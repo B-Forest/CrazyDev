@@ -30,9 +30,5 @@ class SockController extends AbstractController
             'forme' => $pattern->getPath(),
 
         ]);
-
-        // or render a template
-        // in the template, print things with {{ product.name }}
-        // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 }
