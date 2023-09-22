@@ -31,7 +31,7 @@ class Sock implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column]
+    #[ORM\Column (type:"text", length:65535)]
     private  ?string $story = null;
 
     #[ORM\ManyToOne(inversedBy: 'Sock_one')]
