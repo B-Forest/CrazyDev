@@ -1,7 +1,16 @@
-{{ form_start(filterForm) }}
-    {{ form_row(filterForm.color) }}
-    {{ form_row(filterForm.pattern) }}
-    <div class="flex justify-center items-center">
-        <button type="submit" class="bg-valid border-2 border-gray-400 rounded-lg h-12 w-24">Rechercher</button>
+<div class="flex justify-center items-center mb-8">
+    {{ form_start(filterForm ,{'attr': {'class':'flex'}}) }}
+    <div class="mr-4">
+        {{ form_row(filterForm.color , {'attr': {'class':'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5'}}) }}
     </div>
-{{ form_end(filterForm) }}
+    <div class="mr-4">
+        {{ form_row(filterForm.pattern , {'attr': {'class':'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5'}}) }}
+    </div>
+    <div>
+        <button type="submit"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5">
+            Rechercher
+        </button>
+    </div>
+    {{ form_end(filterForm) }}
+</div>
