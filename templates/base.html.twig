@@ -14,9 +14,12 @@
         
     </head>
     <body>  
-     <header class="flex justify-between mr-auto ml-auto max-w-screen-xl py-8">
+
+     <header class="flex justify-between items-center mr-auto ml-auto max-w-screen-xl py-8">
+     <div><img class="w-[50px] ml-24" src="{{ asset('/picture/imgmarceau/logo.svg') }}"></div>
+
         <nav>
-            <ul class="flex text-base font-semibold gap-14 ml-24">
+            <ul class="flex text-base font-semibold gap-14">
 
              <li><a href="{{ path('app_default') }}">Accueil</a></li>
              <li><a href="{{path('app_sock')}}">Chaussettes Perdu</a></li>
