@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pair;
 use App\Entity\Sock;
 use App\Form\PairsType;
+use App\Form\SockFilterType;
 use App\Repository\PairRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,11 +16,21 @@ use App\Repository\SockRepository;
 
 class SockController extends AbstractController
 {
-    #[Route('/lostsock', name: 'app_sock')]
-    public function index(SockRepository $sockRepository): Response
+    #[Route('/lostsock', name: 'app_sock', methods: ['GET', 'POST'])]
+    public function index(SockRepository $sockRepository, Request $request): Response
     {
+        $form = $this->createForm(SockFilterType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            dump($data);
+            $socks = $sockRepository->findByFilter($data);
+        } else (
+            $socks = $sockRepository->findLonelySocks()
+        );
         return $this->render('sock/index.html.twig', [
-            'socklonelies' => $sockRepository->findLonelySocks()
+            'socks' => $socks,
+            'filterForm' => $form,
         ]);
     }
 

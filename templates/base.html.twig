@@ -14,8 +14,10 @@
         
     </head>
     <body>  
-     <header class="flex justify-between items-center mr-auto ml-auto mt-8 max-w-screen-xl mb-24">
+
+     <header class="flex justify-between items-center mr-auto ml-auto max-w-screen-xl py-8">
      <div><img class="w-[50px] ml-24" src="{{ asset('/picture/imgmarceau/logo.svg') }}"></div>
+
         <nav>
             <ul class="flex text-base font-semibold gap-14">
 
@@ -46,7 +48,7 @@
         
      </header>
     
-        <section class="px-8 lg:px-36 pb-8 bg-secondary min-h-screen">
+        <section class="px-8 lg:px-36 pb-8 bg-secondary min-h-screen pt-4">
             {% block body %}{% endblock %}
         </section>
 
