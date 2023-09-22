@@ -22,6 +22,9 @@ class Pattern
     #[ORM\OneToMany(mappedBy: 'pattern', targetEntity: Sock::class)]
     private Collection $socks;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->socks = new ArrayCollection();
@@ -50,6 +53,18 @@ class Pattern
     public function getSocks(): Collection
     {
         return $this->socks;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
 }

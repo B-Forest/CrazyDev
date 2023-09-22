@@ -1,35 +1,29 @@
+<div>
 <div class="grid grid-cols-2 mx-auto justify-center max-w-screen-xl bg-gradient-to-r from-{{ pair.sock.color.twclass }}-200  to-{{ pair.otherSock.color.twclass }}-200">
     <div>
-        <div class="inline-block max-w-xs rounded overflow-hidden shadow-lg h-auto ">
-            <div class="font-bold text-xl mb-2 justify-center items-center flex "
-                 id="name">
-                <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.sock.username }}</a>
+            <div class="inline-block max-w-xs rounded overflow-hidden shadow-lg h-auto ">
+                <div class="font-bold text-xl mb-2 justify-center items-center flex "
+                     id="name">
+                    <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.sock.username }}</a>
+                </div>
+                <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
+                                                                   src="{{ asset('picture/bananas.webp') }}"
+                                                                   alt="Motifs">
+                </div>
             </div>
-            <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
-                                                               src="{{ asset('picture/bananas.webp') }}" alt="Motifs">
-            </div>
-            <div class="px-6 py-4 flex justify-center items-center">
-                <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">
-                    <button class="rounded">Voir le profil</button>
-                </a>
-            </div>
-        </div>
     </div>
-
     <div>
         <div class="inline-block max-w-xs h-auto rounded overflow-hidden shadow-lg ">
             <div class="font-bold text-xl mb-2 justify-center items-center flex "
                  id="name">
                 <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.otherSock.username }}</a>
-            gi</div>
-            <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
-                                                               src="{{ asset('picture/bananas.webp') }}" alt="Motifs">
             </div>
-            <div class="px-6 py-4 flex justify-center items-center">
-                <a href="{{ path('lost_sock',{'id' : pair.otherSock.id}) }}">
-                    <button class="rounded">Voir le profil</button>
-                </a>
+            <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
+                                                               src="{{ asset('picture/bananas.webp') }}"
+                                                               alt="Motifs">
             </div>
         </div>
     </div>
+</div>
+    <a href="{{ path('pair_show',{'id' : pair.id}) }}">Profil</a>
 </div>
