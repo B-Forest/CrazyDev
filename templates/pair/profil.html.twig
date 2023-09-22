@@ -1,9 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil de {{ pair.sock.username }} et {{ pair.otherSock.username}} {% endblock %}
+{% block title %}La paire de {{ pair.sock.username }} et {{ pair.otherSock.username}} {% endblock %}
 
 {% block body %}
 
-<p>Test</p>
+<div class='flex flex-wrap justify-center align-center ' id='Profil'>
+    <div class='rounded w-10/12 bg-{{pair.sock.color.twclass}}-200' id='color'>
+        <div class='text-center inset-x-0 top-0 h-16'>
+            <h1 class='text-4xl font-bold'> La paire de {{ pair.sock.username }} et {{ pair.otherSock.username}} </h1>
+        </div>
+        <div class='flex justify-evenly mb-2' id='forme'>
+            <div id='sockStyle' class='rounded h-[23rem]'>
+                <img src='{{pair.sock.pattern.path}}' alt="Pattern de chaussettes" class="rounded h-[inherit]">
+            </div>
+            <div id='sockStyle' class='rounded h-[23rem]'>
+                <img src='{{pair.otherSock.pattern.path}}' alt="Pattern de chaussettes" class="rounded h-[inherit]">
+            </div>
+            
+        </div>
+        <div id='story' class='rounded'>
+            <div class='text-center'>
+                <h2 class="mb-2 text-2xl">L'histoire de {{pair.sock.username}} et {{pair.otherSock.username}}</h2>
+            </div> 
+            <p class='text-clip overflow-hidden text-center'>{{pair.sock.story}} <br> {{pair.otherSock.story}}</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
