@@ -3,20 +3,34 @@
 {% block title %}Profil de {{ sock.username }} {% endblock %}
 
 {% block body %}
-    <div class='relative border-orange-200 h-3/5 w-3/5'>
-        <div class='m-0 top-1/2 bot-1/2'>
-            <h1> test </h1>
 
-            <img src='{{ forme }}' width="50" height="60">
-            <p>{{ sock.story }}</p>
+<div class='flex flex-wrap justify-center align-center ' id='Profil'>
+    <div class='rounded w-10/12 bg-{{sock.color.twclass}}-200' id='color'>
+        <div class='text-center inset-x-0 top-0 h-16'>
+            <h1 class='text-4xl capitalize font-bold'> {{sock.username}} </h1>
         </div>
-    </div>
-    {% if app.user %}
+        <div class='flex justify-evenly mb-2' id='content'>
+            <div id='sockStyle' class='rounded h-[25rem]'>
+                <img src='{{forme}}' alt="Pattern de chaussettes">
+            </div>
+            <div id='story' class='rounded w-5/12 overflow-y-scroll h-[25rem]'>
+                <div class='text-center'>
+                    <h2 class="mb-2 text-2xl">L'histoire de {{sock.username}}</h2>
+                </div>
+                
+                <p class='text-clip overflow-hidden text-center'>{{sock.story}}
+                </p>
+            </div>
+        </div>
+        <div class='text-center inset-x-0 bottom-0 h-16 flex justify-center pt-4 pb-4'>
+        {% if app.user %}
         {% if sock.id == app.user.id %}
-            <p>c'est votre profil</p>
+            <p>C'est votre profil</p>
         {% else %}
-            {% if app.user.isMatched == 0 %}
-            <div>
+            {% if sock.isFound == 1 %}
+                <p>Cette chaussette a déjà trouvé sa paire</p>
+            {% elseif app.user.isFound == 0 %}
+            <div class='bottom-auto border-solid border-2 border-sky-500 rounded'>
                 {{ form_start(form) }}
                 {{ form_row(form.found) }}
                 {{ form_end(form) }}
@@ -31,5 +45,12 @@
         <div>
         <a href="{{ path('app_login') }}">Connectez-vous pour trouver votre paire</a>
     {% endif %}
+        </div>
+    </div>
+</div>
+
+    
+    
+
 
 {% endblock %}

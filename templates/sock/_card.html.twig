@@ -1,15 +1,14 @@
-<div class='w-full '>
-    <div class="inline-block max-w-xs h-1/6 rounded overflow-hidden shadow-lg ">
-        <a href="{{ path('lost_sock',{'id' : socklonely.id}) }}">
-            <div class="font-bold text-xl mb-2 justify-center items-center flex "
-                 id="name">{{ socklonely.username }}</div>
-        </a>
+<div class='w-full'>
+    <div class="inline-block max-w-xs rounded overflow-hidden shadow-lg h-auto bg-{{ socklonely.color.twclass }}-200">
+        <div class="font-bold text-xl mb-2 justify-center items-center flex "
+             id="name">
+            <a href="{{ path('lost_sock',{'id' : socklonely.id}) }}">{{ socklonely.username }}</a>
+        </div>
         <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
-                                                           src="{{ asset('picture/bananas.webp') }}" alt="Motifs"></div>
+                                                           src="{{ asset(socklonely.pattern.path) }}" alt="Motifs">
+        </div>
         <div class="px-6 py-4">
-
-            <div class="font-bold text-xl mb-2 justify-center items-center flex "
-                 id="name">{{ socklonely.username }}</div>
+            <h2 class="justify-center flex">{{ socklonely.username }}</h2>
             <p class="text-gray-700 text-base">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
                 perferendis eaque, exercitationem praesentium nihil.
