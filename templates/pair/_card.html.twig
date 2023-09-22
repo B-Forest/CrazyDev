@@ -7,7 +7,7 @@
                     <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.sock.username }}</a>
                 </div>
                 <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
-                                                                   src="{{ asset('picture/bananas.webp') }}"
+                                                                   src="{{ pair.sock.pattern.path }}"
                                                                    alt="Motifs">
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <a href="{{ path('lost_sock',{'id' : pair.sock.id}) }}">{{ pair.otherSock.username }}</a>
                 </div>
                 <div class="justify-center items-center flex"><img class="w-3/6 bg-transparent"
-                                                                   src="{{ asset('picture/bananas.webp') }}"
+                                                                   src="{{ pair.otherSock.pattern.path}}"
                                                                    alt="Motifs">
                 </div>
             </div>
