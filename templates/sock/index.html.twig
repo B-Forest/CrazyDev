@@ -4,11 +4,16 @@
 
 {% block body %}
       {% include 'sock/_filter.html.twig'%}
-        <div class="grid grid-cols-3">
             {% if (socks) %}
+                <div class="grid grid-cols-3">
                 {% for socklonely in socks %}
                     {% include 'sock/_card.html.twig' %}
                 {% endfor %}
+            {% else %}
+                <div>
+                    <p class="text-2xl text-center">Il n'y a aucune chaussettes perdues malheuresement..</p>
+                </div>
+
             {% endif %}
         </div>
 {% endblock %}
