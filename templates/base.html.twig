@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Trouve ta chaussette{% endblock %}</title>
         <link rel="icon" href="{{ asset('/picture/imgmarceau/logo.svg') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -16,12 +16,15 @@
     <body>  
 
      <header class="flex justify-between items-center mr-auto ml-auto max-w-screen-xl py-8">
-     <div><img class="w-[50px] ml-24" src="{{ asset('/picture/imgmarceau/logo.svg') }}"></div>
+     <div>
+        <a href="{{ path('app_default') }}">
+         <img class="w-[50px] ml-24" src="{{ asset('/picture/imgmarceau/logo.svg') }}" alt="logo">
+        </a>
+     </div>
 
         <nav>
             <ul class="flex text-base font-semibold gap-14">
 
-             <li><a href="{{ path('app_default') }}">Accueil</a></li>
              <li><a href="{{path('app_sock')}}">Chaussettes Perdu</a></li>
              <li><a href="{{ path('app_pair') }}">Paires Trouvées</a></li>
             </ul>
