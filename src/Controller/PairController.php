@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Form\PairsType;
 use App\Repository\PairRepository;
 use App\Repository\SockRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
