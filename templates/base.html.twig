@@ -14,11 +14,11 @@
         
     </head>
     <body>  
-     <header class="flex justify-between mr-auto ml-auto mt-8 max-w-screen-xl mb-36">
-        <nav class"">
+     <header class="flex justify-between mr-auto ml-auto mt-8 max-w-screen-xl mb-24">
+        <nav>
             <ul class="flex text-base font-semibold gap-14 ml-24">
 
-             <li><a href="">Accueil</a></li>
+             <li><a href="{{ path('app_default') }}">Accueil</a></li>
              <li><a href="{{path('app_sock')}}">Chaussettes Perdu</a></li>
              <li><a href="{{ path('app_pair') }}">Paires Trouvées</a></li>
             </ul>
@@ -26,7 +26,10 @@
 
         <div class="flex">
         {% if app.user %}    
-        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-24">             
+        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-10">
+            <a href="{{ path('lost_sock', {'id' : app.user.id}) }}">Mon compte</a>
+        </div>
+        <div class="border-2 border-pink-500 px-3 py-2 text-pink-500 font-semibold mr-24">
             <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
         {% else %}
@@ -42,9 +45,11 @@
         
      </header>
     
-      
-        {% block body %}{% endblock %}
-        <footer class="mr-auto ml-auto max-w-screen-xl mb-8 mt-36">
+        <section class="px-8 lg:px-36 pb-8 bg-secondary min-h-screen">
+            {% block body %}{% endblock %}
+        </section>
+
+        <footer class="mr-auto ml-auto max-w-screen-xl mb-8 mt-12 ">
             <p class="flex justify-center">
 				<small>
 					Copyrights 2023 - Chaussettes - <a class="underline" href="mentions_legales.html">Mentions légales</a>
