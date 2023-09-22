@@ -28,10 +28,12 @@ class RegistrationFormType extends AbstractType
             ->add('color', EntityType::class, [
                 'class' => 'App\Entity\Color',
                 'choice_label' => 'label',
+                'label' => 'Couleur',
             ])
             ->add('pattern', EntityType::class, [
                 'class' => 'App\Entity\Pattern',
-                'choice_label' => 'path',
+                'choice_label' => 'name',
+                'label' => 'Motif',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
