@@ -4,21 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Pair;
 use App\Entity\Sock;
-<<<<<<< HEAD
-=======
 use App\Form\PairsType;
 use App\Repository\PairRepository;
 use Doctrine\ORM\EntityManagerInterface;
->>>>>>> 914311ff2ae9faaaea9df06158fcb22d4fc74e84
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SockRepository;
-<<<<<<< HEAD
-use App\Repository\PairRepository;
-=======
->>>>>>> 914311ff2ae9faaaea9df06158fcb22d4fc74e84
 
 class SockController extends AbstractController
 {

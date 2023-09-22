@@ -32,6 +32,18 @@ class PatternFixtures extends Fixture
         $manager->persist($pattern3);
         $this->addReference('cerisier', $pattern3);
 
+        $pattern4 = new Pattern();
+        $pattern4->setPath('/picture/doodles.webp');
+        $pattern4->setName('objets');
+        $manager->persist($pattern4);
+        $this->addReference('objets', $pattern4);
+
+        $pattern5 = new Pattern();
+        $pattern5->setPath('/picture/watercolor.webp');
+        $pattern5->setName('petales');
+        $manager->persist($pattern5);
+        $this->addReference('petales', $pattern5);
+
         $manager->flush();
     }
 }
