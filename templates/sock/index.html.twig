@@ -3,11 +3,10 @@
 {% block title %}Hello SockController!{% endblock %}
 
 {% block body %}
-    <button type="button">Couleur</button>
-    <button type="button">Formes</button>
+        {% include 'sock/_filter.html.twig'%}
         <div class="grid grid-cols-3">
-            {% if (socklonelies) %}
-                {% for socklonely in socklonelies %}
+            {% if (socks) %}
+                {% for socklonely in socks %}
                     {% include 'sock/_card.html.twig' %}
                 {% endfor %}
             {% endif %}

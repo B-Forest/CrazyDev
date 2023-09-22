@@ -49,6 +49,29 @@ class SockRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findByFilter($data): array
+    {
+    $qb = $this->createQueryBuilder('sock');
+
+        $qb->addSelect('sock')
+            ->andWhere('sock.isFound = 0')
+            ->orderBy('sock.id', 'ASC');
+
+    if ($data['color']) {
+        $qb->andWhere('sock.color = :color')
+            ->setParameter('color', $data['color']);
+    }
+
+    if ($data['pattern']) {
+        $qb->andWhere('sock.pattern = :pattern')
+            ->setParameter('pattern', $data['pattern']);
+    }
+
+    $qb->orderBy('sock.id', 'ASC');
+
+    return $qb->getQuery()->getResult();
+    }
 //    /**
 //     * @return Sock[] Returns an array of Sock objects
 //     */
