@@ -9,6 +9,8 @@
                 {% for socklonely in socks %}
                     {% include 'sock/_card.html.twig' %}
                 {% endfor %}
+            {% else %}
+                <p>Il n'y a aucune chaussettes perdues</p>
             {% endif %}
         </div>
 {% endblock %}
